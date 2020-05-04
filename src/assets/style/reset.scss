@@ -1,0 +1,357 @@
+@import './var.scss';
+
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+  margin: 0;
+  padding: 0
+}
+
+/*影响编辑器内容*/
+// h1,h2,h3,h4,h5,h6 {
+//   font-size: 100%
+// }
+
+// ol,ul, li {
+//   list-style: none
+// }
+
+small {
+  font-size: 12px
+}
+
+
+a {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: none
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+
+  td,
+  th {
+    padding: rem(5) rem(10);
+    border: 1px solid #ddd;
+  }
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #fff;
+  /* IOS禁止微信调整字体大小 */
+  -webkit-text-size-adjust: 100% !important;
+  font-family: SimHei, PingFangSC-Regular;
+  color: #333;
+}
+
+a:focus,
+input:focus,
+p:focus,
+div:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.must_star {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    content: "*";
+    color: #e71d32;
+    position: absolute;
+    top: 3px;
+    left: -8px;
+  }
+}
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+}
+
+a:focus,
+input:focus,
+p:focus,
+span:focus,
+label:focus,
+div:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-modify: read-only;
+}
+
+input {
+  -webkit-user-select: text !important;
+}
+
+// 积分规则弹窗内容
+.integalRule {
+  width: 100%;
+
+  &__title {
+    font-size: $font-28;
+    color: $gray-50;
+    text-align: left;
+    line-height: rem(30);
+    margin-bottom: rem(19);
+  }
+
+  &__item {
+    display: flex;
+    font-size: $font-26;
+    color: $gray-50;
+    margin-bottom: rem(8);
+    line-height: rem(40);
+    text-align: left;
+    word-break: break-all;
+
+    i {
+      margin-right: rem(20);
+      font-size: rem(16);
+      color: #979797;
+    }
+  }
+}
+
+// 储值卡规则弹窗内容
+.storeValueRule {
+  width: 100%;
+
+  &__title {
+    font-size: $font-28;
+    color: $gray-50;
+    text-align: left;
+    line-height: rem(30);
+    margin-bottom: rem(19);
+  }
+
+  &__item {
+    display: flex;
+    font-size: $font-26;
+    color: $gray-6;
+    margin-bottom: rem(8);
+    line-height: rem(40);
+    text-align: left;
+    word-break: break-all;
+
+    i {
+      margin-right: rem(20);
+      font-size: rem(16);
+      color: #979797;
+    }
+  }
+}
+
+// 积分兑换券结果弹窗
+.coupon-exchange-result {
+  width: 100%;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-36;
+    color: $gray-3;
+    margin-bottom: rem(24);
+
+    i {
+      font-size: rem(56) !important;
+      margin-right: rem(17);
+    }
+
+    i.success {
+      color: $color-success !important;
+    }
+
+    i.fail {
+      color: $color-fail !important;
+    }
+  }
+
+  &__content {
+    font-size: $font-30;
+    color: $gray-6;
+  }
+}
+
+.wxopencardTip {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+  }
+
+  span {
+    margin-top: rem(20);
+    text-align: left;
+  }
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
+.mr0 {
+  margin-right: 0 !important;
+}
+
+/* IOS微信、UC浏览器阻止字体大小调整 */
+body {
+  -webkit-text-size-adjust: none !important;
+  margin: 0;
+}
+
+/* 隐藏地图版本号 */
+.amap-copyright {
+  bottom: rem(-50) !important;
+}
+
+.amap-copyright,
+.amap-logo {
+  bottom: rem(-200) !important;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: rem(24);
+}
+
+.swiper-pagination-bullet {
+  background-color: $color-white !important;
+  opacity: 1 !important;
+  border-radius: 100% !important;
+  margin-right: rem(20) !important;
+  box-shadow: 0 rem(1) rem(10) rgba(0, 0, 0, .5);
+  width: rem(10) !important;
+  height: rem(10) !important;
+  outline: none;
+}
+
+.swiper-pagination-bullet-active {
+  background: $color-main !important;
+  width: rem(30) !important;
+  border-radius: rem(8) !important;
+}
+
+.g-abs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.g-fix {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.mike-info {
+  text-align: center;
+  color: #999;
+  font-size: rem(22);
+  padding: rem(30) 0;
+
+  .icon-chanpinjieshao {
+    font-size: rem(30);
+    color: #aaa;
+  }
+}
+
+.ell {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@for $line from 2 to 4 {
+  .ell#{$line} {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    word-break: break-all;
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.van-picker__cancel {
+  color: #666;
+}

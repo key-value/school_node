@@ -1,0 +1,126 @@
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@function rem($number, $base:750) {
+    @return $number / $base * 10rem;
+}
+
+
+@import "~element-ui/packages/theme-chalk/src/index";
+
+
+
+// 主调色板
+$primary-color: #ff5e00;
+$color-background: #f4f5f5;
+
+
+/* 改变主题色变量 */
+$--color-primary: #409EFF !default;
+
+$default-font-size: 16px;
+$button-font-size: 15px;
+$header-height: rem(88);
+
+$var-color: #282828;
+$var-color-active: #00b9b7;
+$var-color-background: #ddd;
+
+
+$z-index-page: 1000;
+$z-index-page-enter: $z-index-page+10;
+$z-index-page-leave: $z-index-page+9;
+$z-index-page-dialog: 200;
+$z-index-dialog: 5000;
+$z-index-animate: 100000;
+$z-index-loading: 200000;
+
+$color-main: #FF5e00; // 主色调
+
+$h5-bottom-height: 98; // 底部的高度
+$h5-top-height: 88; // 头部的高度。
+$h5-notice-height: 72; // 公告的高度
+$color-primary: #FF5E00;
+$color-primary-1: #FF5E00;
+$color-primary-2: #FF8833;
+$color-primary-3: #FFE1CF;
+$color-primary-4: #FFF3EB;
+
+$color-primary1: #ff5e00; // 主色调
+$color-primary2: #ff8833; // 主色调
+$color-primary3: #ffdfcd; // 主色调
+$color-primary4: #fff3eb; // 少数背景色
+$color-primary5: #ff5000;
+
+$color-disable: #F7F7F7;
+$color-desktop: #F5F5F5;
+$color-cut-line: #E5E5E5;
+$color-border: #D9D9D9;
+$color-background: #FFFFFF;
+$color-dack: #333333;
+$color-gray: #AAAAAA;
+$color-tips: rgba(#111111, 0.5);
+
+$color-success: #04844B;
+$color-warning: #FFB75D;
+$color-failure: #DF2E27;
+$color-info: #5AAAFA;
+$color-caution: #E64340;
+$color-dividing: #e5e5e5; // 分隔线色
+
+$color-minus:#19a274;
+$color-invalid: #f7f7f7; // 失效背景色
+$color-desktop: #f4f5f5; // 桌面背景底色
+$color-dividing: #e5e5e5; // 分隔线色
+$color-border: #e5e5e5; // 边框线色
+$color-white: #fff; // 深背景字体/背景色板
+$gray-3: #333; // 浅背景字体/背景色板/主要文字
+$gray-6: #666; // 次要文字
+$gray-9: #999; // 文字简介
+$gray-b: #bbb; // 失效文字
+$gray-c: #ccc;
+$gray-50:#505050;
+$gray-a:#aaaaaa;
+$gray-0:#000;
+
+$color-light: #ebebeb; // 未选择浅色
+$color-dark: #aaa; // 未选择深色
+$color-disabled: #e1e1e1; // 置灰
+$color-lighttip: rgba(17, 17, 17, 0.70); // 轻提示
+$color-translucent: rgba(0, 0, 0, .4); //半透明弹出框
+$color-translucent1: rgba(0, 0, 0, .7); //半透明弹出框
+
+$color-success: #09bb07; // 成功色
+$color-notice: #ffb75d; // 警告色
+$color-fail: #f04134; // 失败色
+$color-tip: #ff4949; // 信息提示色/信息提示字色
+
+$font-36: rem(36); // 字号36
+$font-32: rem(32); // 字号32
+$font-30: rem(30); // 字号30
+$font-28: rem(28); // 字号28
+$font-26: rem(26); // 字号26
+$font-24: rem(24); // 字号24
+$font-22: rem(22); // 字号22
+$font-14: rem(14); // 字号14
+
+$placeholder-color: #999;
+$dialog-index: 1000;
+$border-color: #d8d8d8;
+$font-color: #666;
+$arrow-color: #d9d9d9;
+$background-color: #f4f5f5;
+
+// 千味涮定制皮肤颜色
+$custom-main-color: #cc8e17; // 框架颜色
+$custom-btn-color: #f0b33e; // 按钮颜色
+$custom-font-color: #a4a3b2; // 文案颜色
+$custom-tag-color: #FCF0D8; // 标签颜色
+
+$color-cut-line: #E5E5E5;
+
+// 文字颜色
+$text-color-1: #333; // 主要
+$text-color-2: #666; // 次要
+$text-color-3: #999; // 简介
+$text-color-4: #BBB; // 失效

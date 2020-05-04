@@ -1,0 +1,279 @@
+@import './var.scss';
+
+// 文字颜色
+.txt-primary {
+  color: $color-primary;
+}
+
+.txt-primary-1 {
+  color: $color-primary-1;
+}
+
+.txt-primary-2 {
+  color: $color-primary-2;
+}
+
+.txt-primary-3 {
+  color: $color-primary-3;
+}
+
+.txt-primary-4 {
+  color: $color-primary-4;
+}
+
+.txt-disable {
+  color: $color-disable;
+}
+
+.txt-desktop {
+  color: $color-desktop;
+}
+
+.txt-cut-line {
+  color: $color-cut-line;
+}
+
+.txt-border {
+  color: $color-border;
+}
+
+.txt-background {
+  color: $color-background;
+}
+
+.txt-dark {
+  color: $color-dack;
+}
+
+.txt-gray {
+  color: $color-gray;
+}
+
+.txt-tips {
+  color: $color-tips;
+}
+
+.txt-success {
+  color: $color-success;
+}
+
+.txt-warning {
+  color: $color-warning;
+}
+
+.txt-failure {
+  color: $color-failure;
+}
+
+.txt-info {
+  color: $color-info;
+}
+
+.txt-caution {
+  color: $color-caution;
+}
+
+// 背景颜色
+.bg-primary {
+  background-color: $color-primary;
+}
+
+.bg-primary-1 {
+  background-color: $color-primary-1;
+}
+
+.bg-primary-2 {
+  background-color: $color-primary-2;
+}
+
+.bg-primary-3 {
+  background-color: $color-primary-3;
+}
+
+.bg-primary-4 {
+  background-color: $color-primary-4;
+}
+
+.bg-disable {
+  background-color: $color-disable;
+}
+
+.bg-desktop {
+  background-color: $color-desktop;
+}
+
+.bg-cut-line {
+  background-color: $color-cut-line;
+}
+
+.bg-border {
+  background-color: $color-border;
+}
+
+.bg-background {
+  background-color: $color-background;
+}
+
+.bg-dark {
+  background-color: $color-dack;
+}
+
+.bg-gray {
+  background-color: $color-gray;
+}
+
+.bg-tips {
+  background-color: $color-tips;
+}
+
+.bg-success {
+  background-color: $color-success;
+}
+
+.bg-warning {
+  background-color: $color-warning;
+}
+
+.bg-failure {
+  background-color: $color-failure;
+}
+
+.bg-info {
+  background-color: $color-info;
+}
+
+.bg-caution {
+  background-color: $color-caution;
+}
+
+// 边框颜色
+.bd-primary {
+  border-color: $color-primary;
+}
+
+.bd-primary-1 {
+  border-color: $color-primary-1;
+}
+
+.bd-primary-2 {
+  border-color: $color-primary-2;
+}
+
+.bd-primary-3 {
+  border-color: $color-primary-3;
+}
+
+.bd-primary-4 {
+  border-color: $color-primary-4;
+}
+
+.bd-disable {
+  border-color: $color-disable;
+}
+
+.bd-desktop {
+  border-color: $color-desktop;
+}
+
+.bd-cut-line {
+  border-color: $color-cut-line;
+}
+
+.bd-border {
+  border-color: $color-border;
+}
+
+.bd-background {
+  border-color: $color-background;
+}
+
+.bd-dark {
+  border-color: $color-dack;
+}
+
+.bd-gray {
+  border-color: $color-gray;
+}
+
+.bd-tips {
+  border-color: $color-tips;
+}
+
+.bd-success {
+  border-color: $color-success;
+}
+
+.bd-warning {
+  border-color: $color-warning;
+}
+
+.bd-failure {
+  border-color: $color-failure;
+}
+
+.bd-info {
+  border-color: $color-info;
+}
+
+.bd-caution {
+  border-color: $color-caution;
+}
+
+// 文字颜色
+.txt-color-1 {
+  color: #333;
+}
+
+.txt-color-2 {
+  color: #666;
+}
+
+.txt-color-3 {
+  color: #999;
+}
+
+.txt-color-4 {
+  color: #BBB;
+}
+
+// 文字大小
+.txt-size-28 {
+  font-size: rem(28);
+}
+
+.txt-size-extra-large {
+  font-size: rem(22);
+}
+
+.txt-size-large {
+  font-size: rem(18);
+}
+
+.txt-size-medium {
+  font-size: rem(16);
+}
+
+.txt-size-small {
+  font-size: rem(14);
+}
+
+.txt-size-extra-small {
+  font-size: rem(12);
+}
+
+// 省略号
+.ell {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@for $line from 2 to 4 {
+  .ell#{$line} {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    word-break: break-all;
+  }
+}
