@@ -1,8 +1,15 @@
 <template>
-  <div>Schedule</div>
+  <div>
+    <el-table>
+      <el-table-column lable="序号"></el-table-column>
+      <el-table-column label="班级"></el-table-column>
+      <el-table-column label="年级"></el-table-column>
+    </el-table>
+  </div>
 </template>
 
-<style lang="scss">
+
+<style lang="scss" scoped>
 </style>
 
 <script>

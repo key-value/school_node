@@ -54,6 +54,15 @@ const routes: RouteConfig[] = [
         },
       },
       {
+        path: 'grade',
+        name: 'TeachingGrade',
+        component: () => import('../views/teaching/Grade.vue'),
+        meta: {
+          menuShow: true,
+          menuName: '年级',
+        },
+      },
+      {
         path: 'glass',
         name: 'TeachingGlass',
         component: () => import('../views/teaching/Glass.vue'),
@@ -76,6 +85,7 @@ const routes: RouteConfig[] = [
 ];
 
 const router = new VueRouter({
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });

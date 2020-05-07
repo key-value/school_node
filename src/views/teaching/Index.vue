@@ -10,9 +10,5 @@
 <script>
 import { Component, Vue, Provide } from 'vue-property-decorator';
 @Component({})
-export default class TeachingIndex extends Vue {
-  created() {
-    console.log('TeachingTemplate');
-  }
-}
+export default class TeachingIndex extends Vue {}
 </script>
