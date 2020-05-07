@@ -54,13 +54,14 @@
               <el-menu-item index="/">
                 <i class="el-icon-setting"></i>
                 <span slot="title">首页</span>
-              </el-menu-item>
+              </el-menu-item> @click="$router.push({ path: item.path+'/'+itemChild.path })"
             </el-menu>-->
+
             <el-menu unique-opened :default-active="$route.path" class="my-menu" router>
               <template v-for="(item , index) in $router.options.routes">
                 <template v-if="item.meta.menuShow">
                   <el-submenu
-                    :index="item.path"
+                    index="1"
                     :key="index"
                     v-if="item.children && item.children.length > 0"
                   >
@@ -70,7 +71,9 @@
                       :index="item.path+'/'+itemChild.path"
                       :key="jndex"
                     >
-                      <span>{{itemChild.meta.menuName}}</span>
+                      <template v-if="item.meta.menuShow">
+                        <span>{{itemChild.meta.menuName}}</span>
+                      </template>
                     </el-menu-item>
                   </el-submenu>
                   <el-menu-item v-else :key="index" :index="item.path">{{item.meta.menuName}}</el-menu-item>
@@ -146,3 +149,5 @@ body,
   line-height: 60px;
 }
 </style>
+
+

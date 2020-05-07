@@ -27,50 +27,50 @@ const routes: RouteConfig[] = [
     },
   },
   {
-    path: '/teaching',
-    name: 'teaching',
-    component: () => import('../views/teaching/Teacher.vue'),
+    path: '/teach',
+    // name: 'Teaching',
+    component: () => import('../views/teaching/Index.vue'),
     meta: {
       menuShow: true,
       menuName: '课程管理',
     },
     children: [
       {
-        path: 'Teacher',
-        name: 'teachingTeacher',
+        path: 'teacher',
+        name: 'TeachingTeacher',
         component: () => import('../views/teaching/Teacher.vue'),
         meta: {
           menuShow: true,
           menuName: '教师',
         },
       },
-      // {
-      //   path: 'Subject',
-      //   name: 'teachingSubject',
-      //   component: () => import('../views/teaching/Subject.vue'),
-      //   meta: {
-      //     menuShow: true,
-      //     menuName: '学科',
-      //   },
-      // },
-      // {
-      //   path: 'Glass',
-      //   name: 'teachingGlass',
-      //   component: () => import('../views/teaching/Glass.vue'),
-      //   meta: {
-      //     menuShow: true,
-      //     menuName: '班级',
-      //   },
-      // },
-      // {
-      //   path: 'Schedule',
-      //   name: 'teachingSchedule',
-      //   component: () => import('../views/teaching/Schedule.vue'),
-      //   meta: {
-      //     menuShow: true,
-      //     menuName: '排课',
-      //   },
-      // },
+      {
+        path: 'subject',
+        name: 'TeachingSubject',
+        component: () => import('../views/teaching/Subject.vue'),
+        meta: {
+          menuShow: true,
+          menuName: '学科',
+        },
+      },
+      {
+        path: 'glass',
+        name: 'TeachingGlass',
+        component: () => import('../views/teaching/Glass.vue'),
+        meta: {
+          menuShow: true,
+          menuName: '班级',
+        },
+      },
+      {
+        path: 'shedule',
+        name: 'TeachingSchedule',
+        component: () => import('../views/teaching/Schedule.vue'),
+        meta: {
+          menuShow: true,
+          menuName: '排课',
+        },
+      },
     ],
   },
 ];

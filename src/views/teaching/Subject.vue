@@ -1,5 +1,5 @@
 <template>
-  <div>123</div>
+  <div>Subject</div>
 </template>
 
 <style lang="scss">
@@ -7,5 +7,6 @@
 
 <script>
 import { Component, Vue, Provide } from 'vue-property-decorator';
+@Component({})
 export default class Subject extends Vue {}
 </script>
