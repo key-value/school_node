@@ -10,13 +10,13 @@ module.exports = {
     open: process.platform === 'darwin',
     host: '0.0.0.0',
     disableHostCheck: true,
-    port: `18080`,
+    port: 18081,
     https: false,
     hotOnly: false,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
     proxy: {
-      '^(?!((/mobile/mall/)|(/sockjs-node/)))': {
-        target: 'https://test.chidaoni.com/',
+      '/api': {
+        target: 'http://sl.lanye.me:18080/',
         changeOrigin: true,
         // logLevel: 'debug',
       },
