@@ -1,18 +1,81 @@
 <template>
-  <div class="flextable">
-    <el-card class="box-card ft24" v-for="(item, index) in 10" :key="index">
-      <div slot="header" class="clearfix">
-        <span>教师名称 {{ index }}</span>
-        <el-button class="operation-button" type="text">删除</el-button>
-        <el-button class="operation-button" type="text">更新</el-button>
-      </div>
-      <div class="text item">这里是内容</div>
-    </el-card>
-    <el-card class="box-card ft24">
-      <div class="text item">这里是增加</div>
-    </el-card>
+  <div>
+    <div class="flextable">
+      <el-card class="box-card ft24" v-for="(item, index) in teacherData" :key="index">
+        <div slot="header" class="clearfix">
+          <span>{{ item.teacherName }}</span>
+          <el-button class="operation-button" @click="del" type="text">删除</el-button>
+          <el-button class="operation-button" type="text">更新</el-button>
+        </div>
+        <div class="text item">这里是内容</div>
+      </el-card>
+      <el-card class="box-card ft24">
+        <div class="text item">这里是增加</div>
+      </el-card>
+    </div>
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="page"
+        :page-sizes="[10, 20, 30, 50]"
+        :page-size="size"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      ></el-pagination>
+    </div>
   </div>
 </template>
+
+
+<script lang="ts">
+import { Component, Vue, Provide } from 'vue-property-decorator';
+import { getTeacherList } from '@/api/school';
+@Component({})
+export default class Teacher extends Vue {
+  teacherData: Array<any> = [];
+  page: number = 0;
+  size: number = 10;
+  total: number = 0;
+  public async created() {
+    this.getTeacherData();
+  }
+  async getTeacherData() {
+    let result = await getTeacherList({ page: this.page, size: this.size });
+    console.log(result);
+    this.teacherData = result.items;
+    this.total = result.count;
+  }
+
+  handleSizeChange(val: any) {
+    this.size = val;
+    this.getTeacherData();
+  }
+  handleCurrentChange(val: any) {
+    this.page = val;
+    this.getTeacherData();
+  }
+  del(row: any) {
+    this.$confirm('确认删除?', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    })
+      .then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功!',
+        });
+      })
+      .catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除',
+        });
+      });
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .box-card {
@@ -46,9 +109,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+.block {
+  margin: 20px auto;
+}
 </style>
-
-<script lang="ts">
-import { Component, Vue, Provide } from 'vue-property-decorator';
-export default class Teacher extends Vue {}
-</script>

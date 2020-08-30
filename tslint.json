@@ -5,31 +5,19 @@
     "exclude": ["node_modules/**"]
   },
   "rules": {
-    "indent": [true, "spaces", 2],
-    "interface-name": false,
-    "no-consecutive-blank-lines": false,
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
-    "quotemark": [true, "single"],
-    "space-before-function-paren": [
-      true,
-      {
-        "anonymous": "ignore",
-        "named": "ignore",
-        "asyncArrow": "ignore"
-      }
-    ],
-    "trailing-comma": [
-      true,
-      {
-        "singleline": "never",
-        "multiline": {
-          "objects": "ignore",
-          "arrays": "ignore",
-          "functions": "ignore",
-          "typeLiterals": "ignore"
-        }
-      }
-    ]
+    "typedef-whitespace": false,
+    "space-before-function-paren": false,
+    "space-within-parens": false,
+    "no-trailing-whitespace": false,
+    "trailing-comma": false,
+    "quotemark": false,
+    "whitespace": false,
+    "no-unused-variable": false,
+    "await-promise": false,
+    "no-use-before-declare": false,
+    "return-undefined": false,
+    "no-unnecessary-qualifier": false,
+    "no-unnecessary-type-assertion": false,
+    "strict-type-predicates": false
   }
 }

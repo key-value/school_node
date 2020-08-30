@@ -19,7 +19,7 @@ export default class Glass extends Vue {
 
   async created() {
     console.log(`created`);
-    this.glassData = JSON.parse(`[{"Id":1,"Name":"1","Grade":5}]`);
+    // this.glassData = JSON.parse(`[{"Id":1,"Name":"1","Grade":5}]`);
   }
 }
 </script>

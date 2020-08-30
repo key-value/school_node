@@ -12,8 +12,9 @@
 <style lang="scss" scoped>
 </style>
 
-<script>
+<script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator';
+import { getTeacherList } from '@/api/school';
 @Component({})
 export default class Schedule extends Vue {}
 </script>
