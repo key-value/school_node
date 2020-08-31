@@ -4,8 +4,8 @@
       <el-card class="box-card ft24" v-for="(item, index) in teacherData" :key="index">
         <div slot="header" class="clearfix">
           <span>{{ item.teacherName }}</span>
-          <el-button class="operation-button" @click="del" type="text">删除</el-button>
-          <el-button class="operation-button" type="text">更新</el-button>
+          <el-button class="operation-button" @Click="del" type="text">删除</el-button>
+          <el-button class="operation-button" @Click="showAdd" type="text">更新</el-button>
         </div>
         <div class="text item">这里是内容</div>
       </el-card>
@@ -20,10 +20,12 @@
         :current-page="page"
         :page-sizes="[10, 20, 30, 50]"
         :page-size="size"
+        background
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
       ></el-pagination>
     </div>
+    <UpdateTeacher visible="true" v-model="selectTeacher"></UpdateTeacher>
   </div>
 </template>
 
@@ -31,9 +33,11 @@
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator';
 import { getTeacherList } from '@/api/school';
-@Component({})
+import UpdateTeacher from '@/components/updateTeacher.vue';
+@Component({ components: { UpdateTeacher } })
 export default class Teacher extends Vue {
   teacherData: Array<any> = [];
+  selectTeacher: any = {};
   page: number = 0;
   size: number = 10;
   total: number = 0;
@@ -41,8 +45,7 @@ export default class Teacher extends Vue {
     this.getTeacherData();
   }
   async getTeacherData() {
-    let result = await getTeacherList({ page: this.page, size: this.size });
-    console.log(result);
+    const result = await getTeacherList({ page: this.page, size: this.size });
     this.teacherData = result.items;
     this.total = result.count;
   }
