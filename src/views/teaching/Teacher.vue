@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- todo: grid + before paddingbuttom  -->
     <div class="flextable">
       <el-card class="box-card ft24">
         <div class="text item" @click="showAdd()">这里是增加</div>
