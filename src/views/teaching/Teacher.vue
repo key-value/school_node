@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="flextable">
+      <el-card class="box-card ft24">
+        <div class="text item" @click="showAdd()">这里是增加</div>
+      </el-card>
       <el-card class="box-card ft24" v-for="(item, index) in teacherData" :key="index">
         <div slot="header" class="clearfix">
           <span>{{ item.teacherName }}</span>
-          <el-button class="operation-button" @Click="del" type="text">删除</el-button>
-          <el-button class="operation-button" @Click="showAdd" type="text">更新</el-button>
+          <el-button class="operation-button" @click="del" type="text">删除</el-button>
+          <el-button class="operation-button" @click="showAdd(item)" type="text">更新</el-button>
         </div>
         <div class="text item">这里是内容</div>
-      </el-card>
-      <el-card class="box-card ft24">
-        <div class="text item">这里是增加</div>
       </el-card>
     </div>
     <div class="block">
@@ -25,24 +25,34 @@
         :total="total"
       ></el-pagination>
     </div>
-    <UpdateTeacher visible="true" v-model="selectTeacher"></UpdateTeacher>
+    <UpdateTeacher :visible.sync="visible" v-model="selectTeacher"></UpdateTeacher>
   </div>
 </template>
 
-
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator';
-import { getTeacherList } from '@/api/school';
+import { getTeacherList } from '@/api/teacher';
 import UpdateTeacher from '@/components/updateTeacher.vue';
 @Component({ components: { UpdateTeacher } })
 export default class Teacher extends Vue {
-  teacherData: Array<any> = [];
+  teacherData: any[] = [];
   selectTeacher: any = {};
   page: number = 0;
   size: number = 10;
   total: number = 0;
+  visible: boolean = false;
+
   public async created() {
-    this.getTeacherData();
+    this.getTeacherData(); //监听浏览器宽度的改变
+    let that = this;
+    window.onresize = function () {
+      that.changeMargin();
+    };
+  }
+  async changeMargin() {
+    //获取网页可见区域宽度
+    let docWidth = document.body.clientWidth;
+    console.log(docWidth);
   }
   async getTeacherData() {
     const result = await getTeacherList({ page: this.page, size: this.size });
@@ -77,12 +87,22 @@ export default class Teacher extends Vue {
         });
       });
   }
+  showAdd(row: any) {
+    if (row) {
+      this.selectTeacher = row;
+    } else {
+      this.selectTeacher = { teacherName: '', id: 0 };
+    }
+    this.visible = true;
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .box-card {
-  width: 320px;
+  // max-width: 350px;
+  // min-width: 250px;
+  width: 18%;
   line-height: 50px;
   margin: 5px;
   min-height: 200px;

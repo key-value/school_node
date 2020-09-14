@@ -1,21 +1,18 @@
-import axios from 'axios';
+import * as glass from './glass';
 
-export const getTeacherList = (params: {}) => {
-  return axios
-    .get(`/api/v1/teacher/page`, {
-      params,
-    })
-    .then((res) => res.data as any);
-};
+export { glass };
+import * as teacher from './teacher';
+export { teacher };
+import * as subject from './subject';
+export { subject };
+import * as grade from './grade';
+export { grade };
+import * as schedule from './schedule';
 
-export const delTeacherList = (id: number) => {
-  return axios.delete(`/api/v1/teacher/${id}`).then((res) => res.data as any);
-};
+export { schedule };
 
-export const updateTeacherList = (id: number, name: string) => {
-  return axios.put(`/api/v1/teacher/${id}`, { name }).then((res) => res.data as any);
+const schoolApi = {
+  glass,
+  teacher,
 };
-
-export const addTeacherList = (name: string) => {
-  return axios.post(`/api/v1/teacher`, { name }).then((res) => res.data as any);
-};
+export default schoolApi;

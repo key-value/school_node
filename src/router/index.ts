@@ -72,7 +72,7 @@ const routes: RouteConfig[] = [
         },
       },
       {
-        path: 'shedule',
+        path: 'schedule',
         name: 'TeachingSchedule',
         component: () => import('../views/teaching/Schedule.vue'),
         meta: {
