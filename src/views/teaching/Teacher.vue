@@ -2,17 +2,21 @@
   <div>
     <!-- todo: grid + before paddingbuttom  -->
     <div class="flextable">
-      <el-card class="box-card ft24">
-        <div class="text item" @click="showAdd()">这里是增加</div>
-      </el-card>
-      <el-card class="box-card ft24" v-for="(item, index) in teacherData" :key="index">
-        <div slot="header" class="clearfix">
-          <span>{{ item.teacherName }}</span>
-          <el-button class="operation-button" @click="del" type="text">删除</el-button>
-          <el-button class="operation-button" @click="showAdd(item)" type="text">更新</el-button>
-        </div>
-        <div class="text item">这里是内容</div>
-      </el-card>
+      <div class="cardItem">
+        <el-card class="box-card ft24">
+          <div class="text item" @click="showAdd()">这里是增加</div>
+        </el-card>
+      </div>
+      <div class="cardItem" v-for="(item, index) in teacherData" :key="index">
+        <el-card class="box-card ft24">
+          <div slot="header" class="clearfix">
+            <span>{{ item.teacherName }}</span>
+            <el-button class="operation-button" @click="del" type="text">删除</el-button>
+            <el-button class="operation-button" @click="showAdd(item)" type="text">更新</el-button>
+          </div>
+          <div class="text item">这里是内容</div>
+        </el-card>
+      </div>
     </div>
     <div class="block">
       <el-pagination
@@ -100,13 +104,19 @@ export default class Teacher extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.box-card {
-  // max-width: 350px;
-  // min-width: 250px;
-  width: 18%;
-  line-height: 50px;
+.cardItem {
+  position: relative;
+  // background-color: #000;
   margin: 5px;
-  min-height: 200px;
+  padding-bottom: 66%;
+}
+
+.box-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .operation-button {
   float: right;
@@ -115,7 +125,7 @@ export default class Teacher extends Vue {
 }
 .clearfix:before,
 .clearfix:after {
-  display: table;
+  // display: table;
   content: '';
 }
 .clearfix:after {
@@ -129,9 +139,11 @@ export default class Teacher extends Vue {
 .item {
   margin-bottom: 18px;
 }
+
 .flextable {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  // flex-wrap: wrap;
 }
 .block {
   margin: 20px auto;
