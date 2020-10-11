@@ -1,16 +1,16 @@
 <template>
-  <el-dialog :visible.sync="show" width="390px">
-    <el-form :model="formData" label-width="80px" :rules="formRule" style="max-width:600px;max-height:200px;">
-      <el-form-item label="级别">
+  <el-dialog :visible.sync="show" width="390px" @close="closeDialog">
+    <el-form :model="formData" label-width="80px" :rules="formRule" style="max-width: 600px; max-height: 200px">
+      <el-form-item label="年级">
         <el-input v-model="formData.sign"></el-input>
       </el-form-item>
       <el-form-item label="学期">
         <el-input v-model="formData.gradeNum"></el-input>
       </el-form-item>
       <el-form-item class="submit-btns">
-        <div style="line-height: 64px; text-align: center;">
-          <el-button type="primary" @click="onSubmit" style="width:84px;">保存</el-button>
-          <el-button @click="cannel" style="width:84px;">返回</el-button>
+        <div style="line-height: 64px; text-align: center">
+          <el-button type="primary" @click="onSubmit" style="width: 84px">保存</el-button>
+          <el-button @click="cannel" style="width: 84px">返回</el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -70,6 +70,11 @@ export default class UpdateGrade extends Vue {
     }
     this.cannel();
   }
+
+  closeDialog() {
+    this.$emit('update:visible', false);
+  }
+
   cannel() {
     this.$emit('update:visible', false);
   }

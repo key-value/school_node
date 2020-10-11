@@ -5,7 +5,13 @@
         <el-input v-model="formData.glassName"></el-input>
       </el-form-item>
       <el-form-item label="学期">
-        <el-input v-model="formData.gradeNum"></el-input>
+        <!-- <el-input v-model="formData.gradeNum"></el-input> -->
+        <el-select v-model="formData.gradeId" placeholder="请选择">
+          <el-option v-for="item in gradeList" :key="item.id" :label="item.gradeNum" :value="item.id">
+            <span style="float: left">{{ item.gradeNum }}</span>
+            <span style="float: right; color: #8492a6; font-size: 13px">{{ item.sign }}</span></el-option
+          ></el-select
+        >
       </el-form-item>
       <el-form-item class="submit-btns">
         <div style="line-height: 64px; text-align: center">
@@ -20,12 +26,13 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Reg } from '@/lib/PassReg';
-import { update, add } from '@/api/grade';
+import { update, add } from '@/api/glass';
+import { getList } from '@/api/grade';
 @Component({
   components: {},
 })
 export default class updateGlass extends Vue {
-  formData = { gradeid: 0, id: 0, glassName: '' };
+  formData = { gradeId: 0, id: 0, glassName: '' };
   formRule = {
     sign: [
       {
@@ -43,6 +50,8 @@ export default class updateGlass extends Vue {
       },
     ],
   };
+
+  gradeList: Array<any> = [];
 
   @Prop()
   value: any;
@@ -65,14 +74,23 @@ export default class updateGlass extends Vue {
   async onSubmit() {
     let result = null;
     if (this.formData.id === 0) {
-      result = await add(this.formData.gradeNum, this.formData.sign);
+      result = await add(this.formData);
     } else {
       result = await update(this.formData);
     }
     this.cannel();
   }
   cannel() {
+    console.log(this.visible);
     this.$emit('update:visible', false);
+
+    console.log(this.visible);
+  }
+
+  async created() {
+    let result = await getList({});
+    this.gradeList = result.items;
+    console.log(this.gradeList);
   }
 }
 </script>

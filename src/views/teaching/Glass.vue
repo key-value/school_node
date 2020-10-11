@@ -7,7 +7,7 @@
       <el-table-column prop="gradeName" label="当前学期"></el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="update(scope.row)">编辑</el-button>
+          <el-button type="text" size="small" @click="showAdd(scope.row)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -23,6 +23,7 @@
         :total="total"
       ></el-pagination>
     </div>
+    <updateGlass :visible.sync="visible" v-model="selectGlass"></updateGlass>
   </div>
 </template>
 
@@ -31,7 +32,8 @@
 <script lang="ts">
 import { glass } from '@/api/school';
 import { Component, Vue, Provide } from 'vue-property-decorator';
-@Component({})
+import updateGlass from '@/components/updateGlass.vue';
+@Component({ components: { updateGlass } })
 export default class Glass extends Vue {
   glassData: any = [];
   selectGlass: any = {};
@@ -97,6 +99,7 @@ export default class Glass extends Vue {
     } else {
       this.selectGlass = { teacherName: '', id: 0 };
     }
+    console.log(this.visible);
     this.visible = true;
   }
 }
