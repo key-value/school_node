@@ -48,17 +48,10 @@ export default class Teacher extends Vue {
   visible: boolean = false;
 
   public async created() {
-    this.getTeacherData(); //监听浏览器宽度的改变
+    this.getTeacherData(); // 监听浏览器宽度的改变
     let that = this;
-    window.onresize = function () {
-      that.changeMargin();
-    };
   }
-  async changeMargin() {
-    //获取网页可见区域宽度
-    let docWidth = document.body.clientWidth;
-    console.log(docWidth);
-  }
+
   async getTeacherData() {
     const result = await getTeacherList({ page: this.page, size: this.size });
     this.teacherData = result.items;

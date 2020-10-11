@@ -3,8 +3,13 @@
     <el-table :data="glassData">
       <el-table-column width="100" prop="id" label="序号"></el-table-column>
       <el-table-column prop="glassName" label="班级"></el-table-column>
-      <el-table-column prop="gradeId" label="入学年级"></el-table-column>
-      <el-table-column label="当前学期"></el-table-column>
+      <el-table-column prop="gradeNum" label="入学年级"></el-table-column>
+      <el-table-column prop="gradeName" label="当前学期"></el-table-column>
+      <el-table-column fixed="right" label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button type="text" size="small" @click="update(scope.row)">编辑</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <div class="block">
       <el-pagination
@@ -34,14 +39,26 @@ export default class Glass extends Vue {
   size: number = 10;
   total: number = 0;
   visible: boolean = false;
+  grade: any = {};
 
   public async created() {
     this.getData();
   }
   async getData() {
-    const result = await glass.getList({ page: this.page, size: this.size });
-    this.glassData = result.items;
+    const result = await glass.getListAndGrade({ page: this.page, size: this.size });
+    this.grade = result.grade as any;
     this.total = result.count;
+    let glassList: any = [];
+    for (const item of result.items) {
+      let glassItem = item;
+      let gradeItem = this.grade[item.gradeId];
+      if (gradeItem) {
+        glassItem.gradeName = gradeItem.sign;
+        glassItem.gradeNum = gradeItem.gradeNum;
+      }
+      glassList.push(glassItem);
+    }
+    this.glassData = glassList;
   }
 
   handleSizeChange(val: any) {
@@ -70,6 +87,9 @@ export default class Glass extends Vue {
           message: '已取消删除',
         });
       });
+  }
+  update(row: any) {
+    console.log(row);
   }
   showAdd(row: any) {
     if (row) {

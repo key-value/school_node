@@ -21,3 +21,11 @@ export const update = (data: { id: number; glassName: string; gradeId: number })
 export const add = (data: { id: number; glassName: string; gradeId: number }) => {
   return axios.post(`/api/v1/${modules}`, data).then((res) => res.data as any);
 };
+
+export const getListAndGrade = (params: { page: number; size: number }) => {
+  return axios
+    .get(`/api/v1/${modules}/grade`, {
+      params,
+    })
+    .then((res) => res.data as any);
+};

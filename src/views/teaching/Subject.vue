@@ -1,16 +1,22 @@
 <template>
-  <div class="flextable">
-    <el-card class="box-card ft24" v-for="(item, index) in subjectData" :key="index">
-      <div slot="header" class="clearfix">
-        <span>{{item.subjectName}}</span>
-        <el-button class="operation-button" type="text">删除</el-button>
-        <el-button class="operation-button" type="text">更新</el-button>
+  <div>
+    <div class="flextable">
+      <div class="cardItem" v-for="(item, index) in subjectData" :key="index">
+        <el-card class="box-card ft24">
+          <div slot="header" class="clearfix">
+            <span>{{ item.subjectName }}</span>
+            <el-button class="operation-button" type="text" @click="del">删除</el-button>
+            <el-button class="operation-button" type="text" @click="showAdd(item)">更新</el-button>
+          </div>
+          <div class="text item">{{ index + 2010 }}级</div>
+        </el-card>
       </div>
-      <div class="text item">201{{index}}级</div>
-    </el-card>
-    <el-card class="box-card ft24">
-      <div class="text item">这里是增加</div>
-    </el-card>
+      <div class="cardItem">
+        <el-card class="box-card ft24">
+          <div class="text item" @click="showAdd()">这里是增加</div>
+        </el-card>
+      </div>
+    </div>
     <div class="block">
       <el-pagination
         @size-change="handleSizeChange"
@@ -23,13 +29,15 @@
         :total="total"
       ></el-pagination>
     </div>
+    <updateSubject :visible.sync="visible" v-model="selectSubject"></updateSubject>
   </div>
 </template>
 
 <script lang="ts">
 import { subject } from '@/api/school';
+import updateSubject from '@/components/updateSubject.vue';
 import { Component, Vue, Provide } from 'vue-property-decorator';
-@Component({})
+@Component({ components: { updateSubject } })
 export default class Subject extends Vue {
   subjectData: any = [];
   selectSubject: any = {};
@@ -86,11 +94,19 @@ export default class Subject extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.box-card {
-  width: 320px;
-  line-height: 50px;
+.cardItem {
+  position: relative;
+  // background-color: #000;
   margin: 5px;
-  min-height: 200px;
+  padding-bottom: 66%;
+}
+
+.box-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .operation-button {
   float: right;
@@ -99,7 +115,7 @@ export default class Subject extends Vue {
 }
 .clearfix:before,
 .clearfix:after {
-  display: table;
+  // display: table;
   content: '';
 }
 .clearfix:after {
@@ -113,9 +129,11 @@ export default class Subject extends Vue {
 .item {
   margin-bottom: 18px;
 }
+
 .flextable {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  // flex-wrap: wrap;
 }
 .block {
   margin: 20px auto;

@@ -1,16 +1,22 @@
 <template>
-  <div class="flextable">
-    <el-card class="box-card ft24" v-for="(item, index) in 4" :key="index">
-      <div slot="header" class="clearfix">
-        <span>学期 {{index+1}}</span>
-        <el-button class="operation-button" type="text">删除</el-button>
-        <el-button class="operation-button" type="text">更新</el-button>
+  <div>
+    <div class="flextable">
+      <div class="cardItem" v-for="(item, index) in glassData" :key="index">
+        <el-card class="box-card ft24">
+          <div slot="header" class="clearfix">
+            <span> {{ item.sign }}</span>
+            <el-button class="operation-button" type="text" @click="del">删除</el-button>
+            <el-button class="operation-button" type="text" @click="showAdd(item)">更新</el-button>
+          </div>
+          <div class="text item">{{ item.gradeNum }} 级</div>
+        </el-card>
       </div>
-      <div class="text item">201{{index}}级</div>
-    </el-card>
-    <el-card class="box-card ft24">
-      <div class="text item">这里是增加</div>
-    </el-card>
+      <div class="cardItem">
+        <el-card class="box-card ft24">
+          <div class="text item" @click="showAdd()">这里是增加</div>
+        </el-card>
+      </div>
+    </div>
     <div class="block">
       <el-pagination
         @size-change="handleSizeChange"
@@ -23,12 +29,14 @@
         :total="total"
       ></el-pagination>
     </div>
+    <updateGrade :visible.sync="visible" v-model="selectGlass"></updateGrade>
   </div>
 </template>
 <script lang="ts">
-// import { grade } from '@/api/school';
+import { grade } from '@/api/school';
 import { Component, Vue, Provide } from 'vue-property-decorator';
-@Component({})
+import updateGrade from '@/components/updateGrade.vue';
+@Component({ components: { updateGrade } })
 export default class Grade extends Vue {
   glassData: any = [];
   selectGlass: any = {};
@@ -41,7 +49,7 @@ export default class Grade extends Vue {
     this.getData();
   }
   async getData() {
-    const result = { items: [], count: 1 }; // await glass.getList({ page: this.page, size: this.size });
+    const result = await grade.getList({});
     this.glassData = result.items;
     this.total = result.count;
   }
@@ -77,18 +85,26 @@ export default class Grade extends Vue {
     if (row) {
       this.selectGlass = row;
     } else {
-      this.selectGlass = { teacherName: '', id: 0 };
+      this.selectGlass = { gradeNum: 1, sign: '', id: 0 };
     }
     this.visible = true;
   }
 }
 </script>
 <style lang="scss" scoped>
-.box-card {
-  width: 320px;
-  line-height: 50px;
+.cardItem {
+  position: relative;
+  // background-color: #000;
   margin: 5px;
-  min-height: 200px;
+  padding-bottom: 66%;
+}
+
+.box-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .operation-button {
   float: right;
@@ -97,23 +113,27 @@ export default class Grade extends Vue {
 }
 .clearfix:before,
 .clearfix:after {
-  display: table;
+  // display: table;
   content: '';
 }
 .clearfix:after {
   clear: both;
 }
 .text {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 60px;
 }
 
 .item {
   margin-bottom: 18px;
 }
+
 .flextable {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  // flex-wrap: wrap;
+}
+.block {
+  margin: 20px auto;
 }
 </style>
-
