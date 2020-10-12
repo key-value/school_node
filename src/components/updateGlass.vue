@@ -1,17 +1,16 @@
 <template>
-  <el-dialog :visible.sync="show" width="390px">
+  <el-dialog :visible.sync="show" width="390px" @close="closeDialog">
     <el-form :model="formData" label-width="80px" :rules="formRule" style="max-width: 600px; max-height: 200px">
       <el-form-item label="班级名称">
         <el-input v-model="formData.glassName"></el-input>
       </el-form-item>
       <el-form-item label="学期">
-        <!-- <el-input v-model="formData.gradeNum"></el-input> -->
         <el-select v-model="formData.gradeId" placeholder="请选择">
           <el-option v-for="item in gradeList" :key="item.id" :label="item.gradeNum" :value="item.id">
             <span style="float: left">{{ item.gradeNum }}</span>
-            <span style="float: right; color: #8492a6; font-size: 13px">{{ item.sign }}</span></el-option
-          ></el-select
-        >
+            <span style="float: right; color: #8492a6">{{ item.sign }}</span>
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item class="submit-btns">
         <div style="line-height: 64px; text-align: center">
@@ -81,16 +80,16 @@ export default class updateGlass extends Vue {
     this.cannel();
   }
   cannel() {
-    console.log(this.visible);
     this.$emit('update:visible', false);
+  }
 
-    console.log(this.visible);
+  closeDialog() {
+    this.$emit('update:visible', false);
   }
 
   async created() {
     let result = await getList({});
     this.gradeList = result.items;
-    console.log(this.gradeList);
   }
 }
 </script>

@@ -90,14 +90,13 @@ export default class Glass extends Vue {
         });
       });
   }
-  update(row: any) {
-    console.log(row);
-  }
+
   showAdd(row: any) {
+    console.log(row);
     if (row) {
       this.selectGlass = row;
     } else {
-      this.selectGlass = { teacherName: '', id: 0 };
+      this.selectGlass = { gradeId: 0, id: 0, glassName: '' };
     }
     console.log(this.visible);
     this.visible = true;
