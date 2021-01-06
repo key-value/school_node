@@ -22,7 +22,7 @@
     "@vue/cli-plugin-typescript": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "typescript": "~3.8.3",
